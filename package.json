@@ -1,0 +1,30 @@
+{
+  "name": "workparty",
+  "version": "0.0.0",
+  "description": "Communicate party style",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidbanham/workparty"
+  },
+  "author": "david@banham.id.au",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/davidbanham/workparty/issues"
+  },
+  "dependencies": {
+    "chipmunk": "~6.1.1",
+    "gulp": "~3.5.1",
+    "browserify": "~3.24.11",
+    "gulp-coffee": "~1.4.1",
+    "gulp-browserify": "~0.4.1",
+    "coffeeify": "~0.6.0"
+  },
+  "devDependencies": {
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.5.1"
+  }
+}
