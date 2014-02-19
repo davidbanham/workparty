@@ -15,13 +15,24 @@
   "bugs": {
     "url": "https://github.com/davidbanham/workparty/issues"
   },
+  "browser": {
+    "headtrackr": "./src/js/vendor/headtrackr.js",
+    "facey": "./src/coffee/facey.coffee"
+  },
+  "browserify-shim": {
+    "headtrackr": "headtrackr"
+  },
+  "browserify": {
+    "transform": [ "coffeeify", "browserify-shim" ]
+  },
   "dependencies": {
     "chipmunk": "~6.1.1",
     "gulp": "~3.5.1",
     "browserify": "~3.24.11",
     "gulp-coffee": "~1.4.1",
     "gulp-browserify": "~0.4.1",
-    "coffeeify": "~0.6.0"
+    "coffeeify": "~0.6.0",
+    "browserify-shim": "~3.2.2"
   },
   "devDependencies": {
     "gulp-util": "~2.2.14",
