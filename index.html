@@ -1,11 +1,21 @@
-<html !doctype=html>
+<html !doctype=html ng-app="workparty">
   <head>
     <script src="build/js/app.js"></script>
+    <link href="build/css/custom.css" rel="stylesheet" type="text/css">
   </head>
 
-  <body>
-  <canvas id="inputCanvas" width="320" height="240" style="display:none"></canvas>
-  <video id="inputVideo" autoplay loop style="display:none"></video>
+  <body ng-controller="test">
+
+    <p>{{!!face.found}}</p>
+
+    <input type="checkbox" ng-model="show_video" label="Show video" value=false>
+
+    <br>
+    <br>
+
+    <canvas id="inputCanvas" width="320" height="240" ng-class="{hidden: !show_video}"></canvas>
+    <video id="inputVideo" autoplay loop style="display:none"></video>
+
   </body>
 
 </html>

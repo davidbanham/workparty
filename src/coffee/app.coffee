@@ -1,14 +1,20 @@
 cp = require 'chipmunk'
+require 'angular/angular'
+
 Facey = require 'facey'
 
-document.addEventListener 'face_appeared', ->
-  console.log 'a wild face appeared!'
+app = angular.module 'workparty', []
 
-document.addEventListener 'face_vanished', ->
-  console.log 'face vanished'
+app.controller 'test', ($scope) ->
+  document.addEventListener 'face_appeared', ->
+    console.log 'a wild face appeared!', $scope.face
+    $scope.$apply()
 
-document.addEventListener 'DOMContentLoaded', ->
+  document.addEventListener 'face_vanished', ->
+    console.log 'face vanished', $scope.face
+    $scope.$apply()
+
   videoInput = document.getElementById('inputVideo')
   canvasInput = document.getElementById('inputCanvas')
 
-  face = new Facey(videoInput, canvasInput)
+  $scope.face = new Facey(videoInput, canvasInput)

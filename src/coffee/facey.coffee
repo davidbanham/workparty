@@ -1,8 +1,13 @@
 headtrackr = require 'headtrackr'
 
+emit = (event) ->
+  setTimeout ->
+    document.dispatchEvent event
+  , 0
+
 Face = (videoInput, canvasInput) ->
   @exists = ->
-    document.dispatchEvent @events.appeared unless @found
+    emit @events.appeared unless @found
     @found = new Date()
     @reset()
 
@@ -15,7 +20,7 @@ Face = (videoInput, canvasInput) ->
   @reset = ->
     clearInterval @interval
     @interval = setInterval =>
-      document.dispatchEvent @events.vanished if @found
+      emit @events.vanished if @found
       @found = false
     , 10000
 
