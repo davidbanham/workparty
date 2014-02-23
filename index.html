@@ -4,17 +4,39 @@
     <link href="build/css/custom.css" rel="stylesheet" type="text/css">
   </head>
 
-  <body ng-controller="test">
+  <body>
 
-    <p>{{!!face.found}}</p>
+    <span ng-controller="locals">
 
-    <input type="checkbox" ng-model="show_video" label="Show video" value=false>
+      <img src="{{avatar.thumbnailUrl}}" ng-class="{fifty: !face.found}">
+      <p>{{avatar.displayName}}</p>
 
-    <br>
-    <br>
+      <br>
+      <br>
 
-    <canvas id="inputCanvas" width="320" height="240" ng-class="{hidden: !show_video}"></canvas>
-    <video id="inputVideo" autoplay loop style="display:none"></video>
+      <label>Email Address</label>
+      <input type="text" ng-model="email">
+
+      <br>
+      <br>
+
+      <label>Show Local Video</label>
+      <input type="checkbox" ng-model="show_video" value=false>
+
+      <br>
+      <br>
+
+      <canvas id="inputCanvas" width="320" height="240" ng-class="{hidden: !show_video}"></canvas>
+      <video id="inputVideo" autoplay loop style="display:none"></video>
+
+    </span>
+    <span ng-controller="remotes">
+      <ul>
+        <li ng-repeat="(id, member) in team">
+          <img src="{{member.avatar.entry[0].thumbnailUrl}}" ng-class="{fifty: !member.present}">
+        </li>
+      </ul>
+    </span>
 
   </body>
 

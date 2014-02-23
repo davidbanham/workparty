@@ -1,3 +1,7 @@
 .hidden {
   display: none;
 }
+
+.fifty {
+  opacity: 0.5;
+}
