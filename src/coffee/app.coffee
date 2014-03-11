@@ -28,6 +28,10 @@ app.controller 'remotes', ($scope, $rootScope, $http) ->
   ]
   qc 'http://switchboard.davidbanham.com', {room: 'workparty', iceServers: iceServers }
     .createDataChannel 'faces'
+    .on 'peer:leave', (id) ->
+      console.log 'peer', id, 'has left the building'
+      delete team[id]
+      $scope.$apply()
     .on 'faces:open', (dc, id) ->
       dc.onmessage = (evt) ->
         console.log 'peer', id, 'says', evt.data

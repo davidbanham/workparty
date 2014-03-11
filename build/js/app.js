@@ -36515,7 +36515,11 @@ app.controller('remotes', function($scope, $rootScope, $http) {
   return qc('http://switchboard.davidbanham.com', {
     room: 'workparty',
     iceServers: iceServers
-  }).createDataChannel('faces').on('faces:open', function(dc, id) {
+  }).createDataChannel('faces').on('peer:leave', function(id) {
+    console.log('peer', id, 'has left the building');
+    delete team[id];
+    return $scope.$apply();
+  }).on('faces:open', function(dc, id) {
     dc.onmessage = function(evt) {
       var hash, parsed;
       console.log('peer', id, 'says', evt.data);
