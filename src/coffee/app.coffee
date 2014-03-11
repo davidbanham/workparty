@@ -14,7 +14,19 @@ app.config ($httpProvider) ->
 app.controller 'remotes', ($scope, $rootScope, $http) ->
   $scope.team = team = {}
 
-  qc 'http://switchboard.davidbanham.com', {ns: 'workparty'}
+  iceServers = [
+    {
+      url: 'turn:yankee.davidbanham.com:3478?transport=udp'
+      credential: 'lol'
+      username: 'internet'
+    }
+    {
+      url: 'turn:yankee.davidbanham.com:3478?transport=tcp'
+      credential: 'lol'
+      username: 'internet'
+    }
+  ]
+  qc 'http://switchboard.davidbanham.com', {room: 'workparty', iceServers: iceServers }
     .createDataChannel 'faces'
     .on 'faces:open', (dc, id) ->
       dc.onmessage = (evt) ->

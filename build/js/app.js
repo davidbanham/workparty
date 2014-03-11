@@ -36499,10 +36499,22 @@ app.config(function($httpProvider) {
 });
 
 app.controller('remotes', function($scope, $rootScope, $http) {
-  var team;
+  var iceServers, team;
   $scope.team = team = {};
+  iceServers = [
+    {
+      url: 'turn:yankee.davidbanham.com:3478?transport=udp',
+      credential: 'lol',
+      username: 'internet'
+    }, {
+      url: 'turn:yankee.davidbanham.com:3478?transport=tcp',
+      credential: 'lol',
+      username: 'internet'
+    }
+  ];
   return qc('http://switchboard.davidbanham.com', {
-    ns: 'workparty'
+    room: 'workparty',
+    iceServers: iceServers
   }).createDataChannel('faces').on('faces:open', function(dc, id) {
     dc.onmessage = function(evt) {
       var hash, parsed;
