@@ -33,6 +33,16 @@ Face = (videoInput, canvasInput) ->
   htracker.init videoInput, canvasInput
   htracker.start()
 
+  setInterval ->
+    htracker.stop()
+  , 10000
+
+  setTimeout ->
+    setInterval ->
+      htracker.start()
+    , 10000
+  , 7000
+
   document.addEventListener 'headtrackingEvent', (ev) =>
     @exists()
 
